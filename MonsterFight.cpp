@@ -40,8 +40,28 @@ void fight(Monster &m1, Monster &m2){
         m1.hitpoints = m1.hitpoints - m2.attack;
         m2.hitpoints = m2.hitpoints - m1.attack;
     }
-    if ( m1.hitpoints > 0 && m2.hitpoints < 0 ){
-        cout << m1.name << " wins in " << round << " rounds!" << endl;
+    if ( m1.hitpoints > 0 && m2.hitpoints <= 0 ){
+        if (round == 0){
+            cout << "No fight" << m2.name << "Its already dead" << endl;
+
+        }
+        else if (round == 1){
+            cout << m1.name << "win in" << round << " round" << endl;
+        }
+        else{
+        cout << m1.name << " wins in " << round << " rounds!" << endl;    
+        }
+        if ( m2.hitpoints > 0 && m1.hitpoints <= 0 ){
+        if (round == 0){
+            cout << "No fight" << m1.name << "Its already dead" << endl;
+
+        }
+        else if (round == 1){
+            cout << m2.name << "win in" << round << " round" << endl;
+        }
+        else{
+        cout << m2.name << " wins in " << round << " rounds!" << endl;    
+        }
     } else if ( m1.hitpoints < 0 && m2.hitpoints > 0 ){
         cout << m2.name << " wins in " << round << " rounds!" << endl;
     } else {
@@ -53,9 +73,19 @@ void fight(Monster &m1, Monster &m2){
 
 void main(){
 
-    //❓❓ Lab Question 5
-    //Add your function call here:
-    fight(monsters [1], monsters [3]);
-    //Comment out this line
-    printMonsterStats(monsters[3]);
+
+for (int i = 0; i < 5; i++) {
+    for (int x = 0; x < 5; x++) {
+        if (i != x) {
+            fight( monsters[i], monsters[x]);
+       
+        } 
+    }
+}
+cout << "final results: " << endl;
+printMonsterStats(monsters[0]);
+printMonsterStats(monsters[1]);
+printMonsterStats(monsters[2]);
+printMonsterStats(monsters[3]);
+printMonsterStats(monsters[4]);
 }
